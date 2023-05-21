@@ -44,3 +44,16 @@ class Zhanr(models.Model):
     def __str__(self):
         return self.name
  
+class Series(models.Model):
+    name = models.CharField(
+        verbose_name='Name series book',
+        max_length=50
+    )
+    description = models.TextField(
+        verbose_name='Description series book',
+        null =True,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.name
