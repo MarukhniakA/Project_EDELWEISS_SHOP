@@ -16,6 +16,10 @@ class Author(models.Model):
     def __str__(self):
         return self.name
     
+    def get_absolute_url(self):
+        return f"/author-cbv/{self.pk}"
+    
+
 class Izdatelstvo(models.Model):
     name = models.CharField(
         verbose_name='Name izdatelstvo',
@@ -29,7 +33,11 @@ class Izdatelstvo(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return f"/izdatelstvo-cbv/{self.pk}"
  
+
 class Zhanr(models.Model):
     name = models.CharField(
         verbose_name='Name zhanr',
@@ -43,6 +51,10 @@ class Zhanr(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return f"/zhanr-cbv/{self.pk}"
+ 
  
 class Series(models.Model):
     name = models.CharField(
@@ -57,3 +69,6 @@ class Series(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return f"/series-cbv/{self.pk}"
