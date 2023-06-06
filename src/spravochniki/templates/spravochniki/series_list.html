@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border=1>
+{% extends 'base.html' %}
+{% block TITLE %}Series list{% endblock TITLE %}
+{% block BODY %}
+
+<table border=1>
     <tr>
         <th>pk</th>
         <th>name</th>
@@ -17,9 +12,12 @@
     <tr>
         <td>{{ obj.pk }}</td>
         <td>{{ obj.name }}</td>
-        <td>{{ obj.action }}</td>
+        <td>
+            <a href="{% url "spravochniki:update-series" pk=obj.pk %}">update</a>
+            <a href="{% url "spravochniki:view-series" pk=obj.pk %}">view</a>
+            <a href="{% url "spravochniki:delete-series" pk=obj.pk %}">delete</a>
+        </td>
     </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock BODY %} 

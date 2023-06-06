@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse_lazy
 # Create your models here.
 
 class Author(models.Model):
@@ -17,8 +17,10 @@ class Author(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return f"/author-cbv/{self.pk}"
-    
+        return reverse_lazy('spravochniki:view-author', kwargs = {"pk": self.pk})
+      
+       
+     
 
 class Izdatelstvo(models.Model):
     name = models.CharField(
@@ -35,7 +37,8 @@ class Izdatelstvo(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return f"/izdatelstvo-cbv/{self.pk}"
+        return reverse_lazy('spravochniki:view-izdatelstvo', kwargs = {"pk": self.pk})
+    
  
 
 class Zhanr(models.Model):
@@ -53,7 +56,8 @@ class Zhanr(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return f"/zhanr-cbv/{self.pk}"
+        return reverse_lazy('spravochniki:view-zhanr', kwargs = {"pk": self.pk})
+ 
  
  
 class Series(models.Model):
@@ -71,4 +75,5 @@ class Series(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return f"/series-cbv/{self.pk}"
+        return reverse_lazy('spravochniki:view-series', kwargs = {"pk": self.pk})
+       
