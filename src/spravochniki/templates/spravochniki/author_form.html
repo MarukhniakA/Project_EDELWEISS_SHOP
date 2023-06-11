@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block TITLE %}Author Add{% endblock TITLE %}
 {% block BODY %}
 
@@ -6,9 +7,9 @@
     <form action="" method="post">
         
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
      
-        <button type="submit"> Submit</button> 
+        <button type="submit" class="btn btn-secondary"> Submit</button> 
     </form>
 
 {% endblock BODY %} 

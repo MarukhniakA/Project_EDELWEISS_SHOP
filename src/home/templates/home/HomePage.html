@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block TITLE %}Home Page{% endblock TITLE %}
 {% block BODY %}
 
     <h1>This IS HOME PAGE!</h1>
-    
-{% endblock BODY %} 
+    <img src="{% static 'spravochniki/home.jpg' %}" alt="My image">
+{% endblock BODY %}  

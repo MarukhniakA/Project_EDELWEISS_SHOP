@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 class Author(models.Model):
     name = models.CharField(
         verbose_name='Name author',
-        max_length=50
+        max_length=50,
+        help_text="Pls, add name!"
     )
     description = models.TextField(
         verbose_name='Description author',

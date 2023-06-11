@@ -2,7 +2,7 @@
 {% block TITLE %}Author list{% endblock TITLE %}
 {% block BODY %}
 
-<table border=1>
+<table class="table table-striped table-hover">
     <tr>
         <th>pk</th>
         <th>name</th>
@@ -13,9 +13,12 @@
         <td>{{ obj.pk }}</td>
         <td>{{ obj.name }}</td>
         <td>
-            <a href="{% url "spravochniki:update-author" pk=obj.pk %}">update</a>
-            <a href="{% url "spravochniki:view-author" pk=obj.pk %}">view</a>
-            <a href="{% url "spravochniki:delete-author" pk=obj.pk %}">delete</a>
+            <a href="{% url "spravochniki:update-author" pk=obj.pk %}">
+                <i class="bi bi-pencil"></i>
+            <a href="{% url "spravochniki:view-author" pk=obj.pk %}">
+                <i class="bi bi-binoculars-fill"></i></a>
+            <a href="{% url "spravochniki:delete-author" pk=obj.pk %}">
+                <i class="bi bi-trash"></i></a>
         </td>
     </tr>
     {% endfor %}
