@@ -3,6 +3,13 @@ from django.urls import reverse_lazy
 # Create your models here.
 
 class Author(models.Model):
+
+    picture = models.ImageField(
+        verbose_name='Author picture',
+        upload_to="uploads/%Y/%m/%d/"
+        )
+
+
     name = models.CharField(
         verbose_name='Name author',
         max_length=50,
@@ -24,6 +31,13 @@ class Author(models.Model):
      
 
 class Izdatelstvo(models.Model):
+    
+    picture = models.ImageField(
+        verbose_name='Izdatelstvo picture',
+        upload_to="uploads/%Y/%m/%d/"
+        )
+
+
     name = models.CharField(
         verbose_name='Name izdatelstvo',
         max_length=50
@@ -43,6 +57,13 @@ class Izdatelstvo(models.Model):
  
 
 class Zhanr(models.Model):
+    
+    picture = models.ImageField(
+        verbose_name='Zhanr picture',
+        upload_to="uploads/%Y/%m/%d/"
+        )
+
+    
     name = models.CharField(
         verbose_name='Name zhanr',
         max_length=50
@@ -62,6 +83,13 @@ class Zhanr(models.Model):
  
  
 class Series(models.Model):
+    
+    picture = models.ImageField(
+        verbose_name='Series picture',
+        upload_to="uploads/%Y/%m/%d/"
+        )
+
+    
     name = models.CharField(
         verbose_name='Name series book',
         max_length=50
