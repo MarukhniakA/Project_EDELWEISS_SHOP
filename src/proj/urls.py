@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('spravochniki/', include('spravochniki.urls', namespace='spravochniki')),
+    path('staff/', include('staff.urls', namespace='staff')),
     path('', home_views.HomePage.as_view(), name="home-page"),
   
 ] 

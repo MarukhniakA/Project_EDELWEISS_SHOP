@@ -5,5 +5,18 @@
 {% block BODY %}
 
     <h1>This IS HOME PAGE!</h1>
+    is_authenticated {{ user.is_authenticated }}<br>
+    is_anonymous {{ user.is_anonymous }}<br>
+    first_name {{ user.first_name }}<br>
+    is_superuser {{ user.is_superuser }}<br>
+
+    {% if user.is_authenticated %}
+        Semisecret text<br>
+    {% endif %}
+    {% if user.is_superuser %}
+        Megasecret text<br>
+    {% endif %}
+     
+
     <img src="{% static 'spravochniki/home.jpg' %}" alt="My image">
 {% endblock BODY %}  

@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from random import randint
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
+from django.urls import reverse_lazy
 
 from . import models
 from pathlib import Path
@@ -29,7 +32,8 @@ class HomePage(generic.TemplateView):
 class AuthorView(generic.DetailView):
     model = models.Author  
   
-class AuthorListView(generic.ListView):
+class AuthorListView(LoginRequiredMixin, generic.ListView):
+    login_url = reverse_lazy("staff:login")
     model = models.Author  
     paginate_by = 20
    
@@ -63,6 +67,7 @@ class IzdatelstvoView(generic.DetailView):
     model = models.Izdatelstvo  
 
 class IzdatelstvoListView(generic.ListView):
+    login_url = reverse_lazy("staff:login")
     model = models.Izdatelstvo  
     paginate_by = 20    
 
@@ -96,6 +101,7 @@ class ZhanrView(generic.DetailView):
     model = models.Zhanr
 
 class ZhanrListView(generic.ListView):
+    login_url = reverse_lazy("staff:login")
     model = models.Zhanr  
     paginate_by = 20    
 
@@ -127,6 +133,7 @@ class SeriesView(generic.DetailView):
     model = models.Series
 
 class SeriesListView(generic.ListView):
+    login_url = reverse_lazy("staff:login")
     model = models.Series  
     paginate_by = 20    
 
