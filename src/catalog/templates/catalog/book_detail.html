@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block TITLE %}Book detail{% endblock TITLE %}
+{% block BODY %}
+
+    <h1>Book details</h1>
+    <div class="card" style="width: 18rem;">
+        <img src="{{ object.picture.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ object.name }}</h5>
+          <h4 class="card-title">{{ object.author }}</h4>
+          <p class="card-text">{{ object.description }}</p>
+          <h4 class="card-title">{{ object.price }}</h4>
+          <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+        </div>
+      </div>
+    
+{% endblock BODY %} 

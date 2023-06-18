@@ -24,8 +24,8 @@ def resizer(image):
         im.save(str(BASE_DIR / "".join(file_name[:-1])) + f'_{m_basewidth}_.' + extention )
   
 
-class HomePage(generic.TemplateView):
-    template_name = "spravochniki/HomePage.html"
+#class HomePage(generic.TemplateView):
+#    template_name = "spravochniki/HomePage.html"
 
 
 #Author
