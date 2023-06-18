@@ -18,12 +18,30 @@ class Book(models.Model):
 
     author = models.ForeignKey(
         spravochniki.models.Author,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        null =True,
+        blank=True
     )
     
     zhanr = models.ForeignKey(
         spravochniki.models.Zhanr,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        null =True,
+        blank=True
+    )
+
+    series = models.ForeignKey(
+        spravochniki.models.Series,
+        on_delete=models.PROTECT,
+        null =True,
+        blank=True
+    )
+
+    izdatelstvo = models.ForeignKey(
+        spravochniki.models.Izdatelstvo,
+        on_delete=models.PROTECT,
+        null =True,
+        blank=True
     )
 
     description = models.TextField(
