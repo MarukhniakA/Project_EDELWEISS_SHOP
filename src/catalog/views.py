@@ -41,7 +41,7 @@ class BookListView(LoginRequiredMixin, generic.ListView):
 class BookAddView(generic.CreateView):
     model = models.Book 
     fields = [
-       "picture", "name", "author", "zhanr", "series", "izdatelstvo", "price", "description"
+       "picture", "name", "price", "author", "series",  "zhanr", "the_year_publishing", "pages", "binding", "format", "ISBN", "weight", "age_restrictions", "izdatelstvo", "kolvo_book", "active_book", "date_entry_catalog", "date_of_change"
         ]    
     
     def get_success_url(self) -> str:
@@ -52,7 +52,7 @@ class BookUpdateView(generic.UpdateView):
     model = models.Book
     template_name = "catalog/book_form.html"
     fields = [
-        "picture", "name", "author", "zhanr", "series", "izdatelstvo", "price", "description"
+        "picture", "name", "price", "author", "series",  "zhanr", "the_year_publishing", "pages", "binding", "format", "ISBN", "weight", "age_restrictions", "izdatelstvo", "kolvo_book", "active_book", "date_entry_catalog", "date_of_change"
         ]    
 
 class BookDeleteView(generic.DeleteView):
