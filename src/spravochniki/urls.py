@@ -23,5 +23,10 @@ urlpatterns = [
     path('series-add/', views.SeriesAddView.as_view(), name="add-series"),
     path('series-update/<int:pk>', views.SeriesUpdateView.as_view(), name="update-series"),
     path('series-delete/<int:pk>', views.SeriesDeleteView.as_view(), name="delete-series"),
+    path('status/<int:pk>', views.StatusView.as_view(), name="view-status"),
+    path('status-list/',views.StatusListView.as_view(), name="list-status"),
+    path('status-add/', views.StatusAddView.as_view(), name="add-status"),
+    path('status-update/<int:pk>', views.StatusUpdateView.as_view(), name="update-status"),
+    path('status-delete/<int:pk>', views.StatusDeleteView.as_view(), name="delete-status"),
 
 ]

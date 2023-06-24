@@ -82,3 +82,16 @@ class Series(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('spravochniki:view-series', kwargs = {"pk": self.pk})
        
+
+class Status(models.Model):
+
+    name = models.CharField(
+        verbose_name='Name status',
+        max_length=50
+    )
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse_lazy('spravochniki:view-status', kwargs = {"pk": self.pk})

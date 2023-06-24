@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block TITLE %}Status list{% endblock TITLE %}
+{% block BODY %}
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>pk</th>
+        <th>name</th>
+        <th>actions</th>
+    </tr>
+    {% for obj in object_list %}
+    <tr>
+        <td>{{ obj.pk }}</td>
+        <td>{{ obj.name }}</td>
+        <td>
+            <a href="{% url "spravochniki:update-status" pk=obj.pk %}">                
+                <i class="bi bi-pencil"></i></a>
+            <a href="{% url "spravochniki:view-status" pk=obj.pk %}">
+                <i class="bi bi-binoculars-fill"></i></a>
+            <a href="{% url "spravochniki:delete-status" pk=obj.pk %}">
+                <i class="bi bi-trash"></i></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock BODY %} 

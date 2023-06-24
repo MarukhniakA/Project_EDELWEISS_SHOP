@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'spravochniki',
     'catalog',
     'staff',
+    'orders',
     'home',
 ]
 

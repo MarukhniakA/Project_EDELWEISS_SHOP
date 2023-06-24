@@ -160,3 +160,32 @@ class SeriesDeleteView(generic.DeleteView):
     success_url = "/"    
 
 
+#Status    
+class StatusView(generic.DetailView):
+    model = models.Status
+
+class StatusListView(generic.ListView):
+    login_url = reverse_lazy("staff:login")
+    model = models.Status  
+    paginate_by = 20    
+
+class StatusAddView(generic.CreateView):
+    model = models.Status 
+    fields = [
+        "name"
+        ]          
+
+
+class StatusUpdateView(generic.UpdateView):
+    model = models.Status
+    template_name = "spravochniki/Status_form.html"
+    fields = [
+        "name"
+        ]       
+
+class StatusDeleteView(generic.DeleteView):
+    model = models.Status
+    template_name = "spravochniki/Status-delete.html"
+    success_url = "/"    
+
+

@@ -19,7 +19,7 @@ class Book(models.Model):
     price = models.DecimalField(
         verbose_name='Price book',
         max_digits=6,
-        decimal_places=0
+        decimal_places=2
     )
 
     author = models.ForeignKey(
