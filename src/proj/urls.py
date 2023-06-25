@@ -26,6 +26,7 @@ urlpatterns = [
     path('spravochniki/', include('spravochniki.urls', namespace='spravochniki')),
     path('catalog/', include('catalog.urls', namespace='catalog')),
     path('staff/', include('staff.urls', namespace='staff')),
+    path('orders/', include('orders.urls', namespace='orders')),
     path('', home_views.HomePage.as_view(), name="home-page"),
   
 ] 
