@@ -1,8 +1,11 @@
 from typing import Any, Dict, Optional
+from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.views.generic import DetailView
-from . import models
+from django.views.generic import DetailView, TemplateView, FormView
+from . import models, forms
 from catalog.models import Book
+from spravochniki.models import Status
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -12,8 +15,6 @@ class CartDetailView(DetailView):
     model = models.Cart
 
     def get_object(self, *args, **kwargs):
-        print(self.request.GET.get("good_id"))
-        print(self.request.GET.get("quantity"))
         cart_pk = self.request.session.get("cart_id")
         customer = self.request.user
         if customer.is_anonymous:
@@ -76,8 +77,47 @@ class CartAddDeleteItemView(DetailView):
             if action == "add":
                 addition = 1
             else:
+                if good_in_cart.quantity <= 1:
+                    good_in_cart.delete()
+                    return cart
                 addition = -1
             good_in_cart.quantity = good_in_cart.quantity + addition
             good_in_cart.price = good_in_cart.quantity * price
             good_in_cart.save()
         return cart
+     
+
+class CreateOrder(FormView):
+    form_class = forms.CreateOrderForm
+    template_name = "orders/create_order.html"     
+    success_url = reverse_lazy("orders:order-complete")
+
+    def form_valid(self, form):
+        delivery_address = form.cleaned_data.get("delivery_address")
+        status = Status.objects.get(pk = 1) 
+        cart_pk = int(self.request.session.get("cart_id"))
+        cart = get_object_or_404(
+            models.Cart,
+            pk = cart_pk
+        )
+        obj =  models.Order.objects.create(
+            delivery_address = delivery_address,
+            status = status,
+            cart = cart
+        )
+        del self.request.session["cart_id"]
+        return super().form_valid(form)   
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart_id = self.request.session.get("cart_id", -100)
+
+        context["object"] = get_object_or_404(
+            models.Cart,
+            pk = int(cart_id)
+        )
+        return context 
+    
+
+class OrderSuccess(TemplateView):
+    template_name = "orders/order-complete.html"    
