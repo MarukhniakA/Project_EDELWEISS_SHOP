@@ -4,19 +4,13 @@
 {% block TITLE %}Home Page{% endblock TITLE %}
 {% block BODY %}
 
-    <h1>This IS HOME PAGE!</h1>
-    is_authenticated {{ user.is_authenticated }}<br>
-    is_anonymous {{ user.is_anonymous }}<br>
-    first_name {{ user.first_name }}<br>
-    is_superuser {{ user.is_superuser }}<br>
-
-    {% if user.is_authenticated %}
-        Semisecret text<br>
-    {% endif %}
-    {% if user.is_superuser %}
-        Megasecret text<br>
-    {% endif %}
-     
-
+    <h1>Welcome to book shop!</h1>
     <img src="{% static 'spravochniki/home.jpg' %}" alt="My image">
+ <style>
+    img {
+        width: 1000px;
+       -webkit-mask-image: radial-gradient(circle at 50%, black 50%, rgba(0, 0, 0, 0.2) 10%);
+        mask-image: radial-gradient(circle at 50%, black 50%, rgba(0, 0, 0, 0.2) 10%);
+      }
+    </style>
 {% endblock BODY %}  
